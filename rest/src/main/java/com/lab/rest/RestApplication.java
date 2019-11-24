@@ -32,13 +32,10 @@ public class RestApplication {
     @Bean
 	public CommandLineRunner demo(ClientRepository repository){
     	return (args) -> {
-    		Client test = new Client("test@example.com","123456");
-    		test.setId(1L);
-    		repository.save(test);
-    		repository.save(new Client("root@example.com","123456"));
-    		for (Client client : repository.findAll()){
+    		for (Client client : repository.findByEmailContains("test")){
     			log.info(client.toString());
 			}
+
 		};
 	}
 }

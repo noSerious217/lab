@@ -3,14 +3,21 @@ package com.lab.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Client")
+@Table(name = "clients")
 public class Client {
+    public Client(String email, Double discount, String password) {
+        this.email = email;
+        this.discount = discount;
+        this.password = password;
+    }
+
     @Id
-    @Column(name = "Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
+    @SequenceGenerator(name = "clientSeq", sequenceName = "client_sequence", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientSeq")
     private Long id;
 
-    @Column(name = "Email")
+    @Column(name = "Email", nullable = false)
     private String email;
 
     @Column(name = "Discount")
