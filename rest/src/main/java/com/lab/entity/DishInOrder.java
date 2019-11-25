@@ -6,14 +6,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dishes_in_order")
+@IdClass(DishInOrderId.class)
 public class DishInOrder {
+
     @Id
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "dish_id", column = @Column(name = "dish_id")),
-            @AttributeOverride(name = "order_id", column = @Column(name = "order_id"))
-    })
-    private DishInOrderId dishInOrderId;
+    @Column(name = "order_id")
+    private Long order_id;
+
+    @Id
+    @Column(name="dish_id")
+    private Long dish_id;
 
     @Column(name = "count")
     private Long count;
@@ -26,26 +28,26 @@ public class DishInOrder {
     @JoinColumn(name = "orderid")
     private Order order;
 
-    public DishInOrder(Long dishId, Long orderId, Long count) {
-        this.dishInOrderId.setDish_id(dishId);
-        this.dishInOrderId.setOrder_id(orderId);
+    public DishInOrder(Long order_id, Long dish_id, Long count) {
+        this.order_id = order_id;
+        this.dish_id = dish_id;
         this.count = count;
     }
 
-    public Long getDishId() {
-        return dishInOrderId.getDish_id();
+    public Long getOrder_id() {
+        return order_id;
     }
 
-    public void setDishId(Long dishId) {
-        dishInOrderId.setDish_id(dishId);
+    public void setOrder_id(Long order_id) {
+        this.order_id = order_id;
     }
 
-    public Long getOrderId() {
-        return dishInOrderId.getOrder_id();
+    public Long getDish_id() {
+        return dish_id;
     }
 
-    public void setOrderId(Long orderId) {
-        dishInOrderId.setOrder_id(orderId);
+    public void setDish_id(Long dish_id) {
+        this.dish_id = dish_id;
     }
 
     public Long getCount() {
@@ -67,10 +69,9 @@ public class DishInOrder {
     @Override
     public String toString() {
         return "DishInOrder{" +
-                "dishInOrderId=" + dishInOrderId +
+                "order_id=" + order_id +
+                ", dish_id=" + dish_id +
                 ", count=" + count +
-                ", dish=" + dish +
-                ", order=" + order +
                 '}';
     }
 }

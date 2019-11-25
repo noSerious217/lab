@@ -11,7 +11,7 @@ public class Order {
     @Id
     @Column(name = "order_id")
     @SequenceGenerator(name = "orderSeq",allocationSize = 1,initialValue = 1,sequenceName = "order_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "order_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "orderSeq")
     private Long id;
 
     @Column(name = "user_id")

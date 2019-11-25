@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 @Embeddable
 public class DishInOrderId implements Serializable {
+    public DishInOrderId() {
+    }
+
     public DishInOrderId(Long dish_id, Long order_id) {
         this.dish_id = dish_id;
         this.order_id = order_id;
