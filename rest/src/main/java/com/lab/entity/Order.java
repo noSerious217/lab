@@ -2,37 +2,48 @@ package com.lab.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
 public class Order {
     @Id
-    @Column(name = "id")
+    @Column(name = "order_id")
     @SequenceGenerator(name = "orderSeq",allocationSize = 1,initialValue = 1,sequenceName = "order_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "order_sequence")
     private Long id;
 
-    @Column(name = "userid")
+    @Column(name = "user_id")
     private Long userid;
 
-    @Column(name = "timeorder")
+    @Column(name = "order_timeorder")
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeorder;
 
-    @Column(name = "timedelivery")
+    @Column(name = "order_timedelivery")
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     private Date timedelivery;
 
-    @Column(name = "address")
+    @Column(name = "order_address")
     private String address;
 
-    @Column(name = "payment")
+    @Column(name = "order_payment")
     private double payment;
 
-    @Column(name = "discount")
+    @Column(name = "order_discount")
     private double discount;
+
+    @ManyToMany
+    @JoinTable(
+            name = "assignedcouriers",
+            joinColumns = {@JoinColumn(name = "order_id")},
+            inverseJoinColumns = {@JoinColumn(name = "courier_id")}
+    )
+    Set<Courier> couriers = new HashSet<>();
+
 
     public Order() {
     }
@@ -101,6 +112,10 @@ public class Order {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "userid",nullable = false)
+    private Client client;
 
     @Override
     public String toString() {

@@ -1,17 +1,18 @@
 package com.lab.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "dishes")
 public class Dish {
     @Id
-    @Column(name = "id")
-    @SequenceGenerator(name = "dishSeq",sequenceName = "dish_sequence",initialValue = 1,allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "dishSeq")
+    @Column(name = "dish_id")
+    @SequenceGenerator(name = "dishSeq", sequenceName = "dish_sequence", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dishSeq")
     private Long id;
 
-    @Column(name = "ingredients")
+    @Column(name = "dish_ingredients")
     private String ingredients;
 
     public Dish(String ingredients) {

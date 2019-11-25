@@ -1,6 +1,7 @@
 package com.lab.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "clients")
@@ -12,19 +13,30 @@ public class Client {
     }
 
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "client_id", nullable = false)
     @SequenceGenerator(name = "clientSeq", sequenceName = "client_sequence", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientSeq")
     private Long id;
 
-    @Column(name = "Email", nullable = false)
+    @Column(name = "client_email", nullable = false)
     private String email;
 
-    @Column(name = "Discount")
+    @Column(name = "client_discount")
     private Double discount;
 
-    @Column(name = "Password")
+    @Column(name = "client_password")
     private String password;
+
+    @OneToMany(mappedBy = "client")
+    private Set<Order> orders;
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 
     @Override
     public String toString() {

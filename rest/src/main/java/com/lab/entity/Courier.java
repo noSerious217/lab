@@ -1,24 +1,29 @@
 package com.lab.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "couriers")
 public class Courier {
     @Id
-    @Column(name = "id")
+    @Column(name = "courier_id")
     @SequenceGenerator(name = "courierSeq",allocationSize = 1,initialValue = 1,sequenceName = "courier_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "courierSeq")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "courier_name")
     private String name;
 
-    @Column(name="email")
+    @Column(name="courier_email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "courier_phone")
     private String phone;
+
+    @ManyToMany(mappedBy = "couriers")
+    private Set<Order> orders = new HashSet<>();
 
     @Override
     public String toString() {
