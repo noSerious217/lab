@@ -9,18 +9,27 @@ import java.util.Set;
 public class Courier {
     @Id
     @Column(name = "courier_id")
-    @SequenceGenerator(name = "courierSeq",allocationSize = 1,initialValue = 1,sequenceName = "courier_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "courierSeq")
+    @SequenceGenerator(name = "courierSeq", allocationSize = 1, initialValue = 1, sequenceName = "courier_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courierSeq")
     private Long id;
 
     @Column(name = "courier_name")
     private String name;
 
-    @Column(name="courier_email")
+    @Column(name = "courier_email")
     private String email;
 
     @Column(name = "courier_phone")
     private String phone;
+
+    public Courier() {
+    }
+
+    public Courier(String name, String email, String phone) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
 
     @Override
     public String toString() {
@@ -61,15 +70,6 @@ public class Courier {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Courier() {
-    }
-
-    public Courier(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
         this.phone = phone;
     }
 }

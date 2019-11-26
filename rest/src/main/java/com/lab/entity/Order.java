@@ -35,6 +35,10 @@ public class Order {
     @Column(name = "order_discount")
     private double discount;
 
+    @ManyToOne
+    @JoinColumn(name = "userid", nullable = false)
+    private Client client;
+
     public Order() {
     }
 
@@ -102,10 +106,6 @@ public class Order {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "userid",nullable = false)
-    private Client client;
 
     @Override
     public String toString() {

@@ -6,12 +6,6 @@ import java.util.Set;
 @Entity
 @Table(name = "clients")
 public class Client {
-    public Client(String email, Double discount, String password) {
-        this.email = email;
-        this.discount = discount;
-        this.password = password;
-    }
-
     @Id
     @Column(name = "client_id", nullable = false)
     @SequenceGenerator(name = "clientSeq", sequenceName = "client_sequence", initialValue = 1, allocationSize = 1)
@@ -27,14 +21,31 @@ public class Client {
     @Column(name = "client_password")
     private String password;
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", discount=" + discount +
-                ", password='" + password + '\'' +
-                '}';
+    @Column(name = "client_role")
+    private String role;
+
+    public Client(String email, Double discount, String password) {
+        this.email = email;
+        this.discount = discount;
+        this.password = password;
+        role = "USER";
+    }
+
+    public Client(String email, Double discount, String password, String role) {
+        this.email = email;
+        this.discount = discount;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Client() {
+    }
+
+    public Client(String email, String password) {
+        this.email = email;
+        discount = 0.0;
+        this.password = password;
+        role = "USER";
     }
 
     public Long getId() {
@@ -69,12 +80,22 @@ public class Client {
         this.password = password;
     }
 
-    public Client() {
+    public String getRole() {
+        return role;
     }
 
-    public Client(String email, String password) {
-        this.email = email;
-        discount = 0.0;
-        this.password = password;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", discount=" + discount +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
