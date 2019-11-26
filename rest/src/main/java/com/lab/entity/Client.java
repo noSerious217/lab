@@ -27,17 +27,6 @@ public class Client {
     @Column(name = "client_password")
     private String password;
 
-    @OneToMany(mappedBy = "client")
-    private Set<Order> orders;
-
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
-
     @Override
     public String toString() {
         return "Client{" +

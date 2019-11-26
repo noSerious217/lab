@@ -2,8 +2,7 @@ package com.lab.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "orders")
@@ -35,15 +34,6 @@ public class Order {
 
     @Column(name = "order_discount")
     private double discount;
-
-    @ManyToMany
-    @JoinTable(
-            name = "assignedcouriers",
-            joinColumns = {@JoinColumn(name = "order_id")},
-            inverseJoinColumns = {@JoinColumn(name = "courier_id")}
-    )
-    Set<Courier> couriers = new HashSet<>();
-
 
     public Order() {
     }

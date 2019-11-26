@@ -22,9 +22,6 @@ public class Courier {
     @Column(name = "courier_phone")
     private String phone;
 
-    @ManyToMany(mappedBy = "couriers")
-    private Set<Order> orders = new HashSet<>();
-
     @Override
     public String toString() {
         return "Courier{" +

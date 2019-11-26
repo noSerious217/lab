@@ -23,19 +23,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.lab.repository")
 public class RestApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(RestApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(RestApplication.class);
 
     public static void main(String[] args) {
-    	SpringApplication.run(RestApplication.class, args);
+        SpringApplication.run(RestApplication.class, args);
     }
 
     @Bean
-	public CommandLineRunner demo(ClientRepository repository){
-    	return (args) -> {
-    		for (Client client : repository.findByEmailContains("test")){
-    			log.info(client.toString());
-			}
-
-		};
-	}
+    public CommandLineRunner demo(ClientRepository repository) {
+        return (args -> {
+            //repository.save(new Client("test@example.com", "123456"));
+        });
+    }
 }

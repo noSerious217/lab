@@ -8,35 +8,35 @@ public class DishInOrderId implements Serializable {
     public DishInOrderId() {
     }
 
-    public DishInOrderId(Long dish_id, Long order_id) {
-        this.dish_id = dish_id;
-        this.order_id = order_id;
+    public DishInOrderId(Long dishid, Long orderid) {
+        this.dishid = dishid;
+        this.orderid = orderid;
     }
 
-    public Long getDish_id() {
-        return dish_id;
+    public Long getDishid() {
+        return dishid;
     }
 
-    public void setDish_id(Long dish_id) {
-        this.dish_id = dish_id;
+    public void setDishid(Long dish_id) {
+        this.dishid = dish_id;
     }
 
-    public Long getOrder_id() {
-        return order_id;
+    public Long getOrderid() {
+        return orderid;
     }
 
-    public void setOrder_id(Long order_id) {
-        this.order_id = order_id;
+    public void setOrderid(Long order_id) {
+        this.orderid = order_id;
     }
 
-    private Long dish_id;
-    private Long order_id;
+    private Long dishid;
+    private Long orderid;
 
     @Override
     public String toString() {
         return "DishInOrderId{" +
-                "dish_id=" + dish_id +
-                ", order_id=" + order_id +
+                "dish_id=" + dishid +
+                ", order_id=" + orderid +
                 '}';
     }
 }

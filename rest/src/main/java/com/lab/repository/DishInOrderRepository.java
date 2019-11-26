@@ -5,5 +5,5 @@ import com.lab.util.DishInOrderId;
 import org.springframework.data.repository.CrudRepository;
 
 public interface DishInOrderRepository extends CrudRepository<DishInOrder, DishInOrderId> {
-    DishInOrder findByDishIdAndOrderId(Long dish_id,Long order_id);
+    DishInOrder findByDishidAndOrderid(Long dishid, Long orderid);
 }

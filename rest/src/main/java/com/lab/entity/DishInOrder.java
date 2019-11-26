@@ -11,43 +11,35 @@ public class DishInOrder {
 
     @Id
     @Column(name = "order_id")
-    private Long order_id;
+    private Long orderid;
 
     @Id
     @Column(name="dish_id")
-    private Long dish_id;
+    private Long dishid;
 
     @Column(name = "count")
     private Long count;
 
-    @ManyToOne
-    @JoinColumn(name = "dishid")
-    private Dish dish;
-
-    @ManyToOne
-    @JoinColumn(name = "orderid")
-    private Order order;
-
-    public DishInOrder(Long order_id, Long dish_id, Long count) {
-        this.order_id = order_id;
-        this.dish_id = dish_id;
+    public DishInOrder(Long orderid, Long dishid, Long count) {
+        this.orderid = orderid;
+        this.dishid = dishid;
         this.count = count;
     }
 
-    public Long getOrder_id() {
-        return order_id;
+    public Long getOrderid() {
+        return orderid;
     }
 
-    public void setOrder_id(Long order_id) {
-        this.order_id = order_id;
+    public void setOrderid(Long orderid) {
+        this.orderid = orderid;
     }
 
-    public Long getDish_id() {
-        return dish_id;
+    public Long getDishid() {
+        return dishid;
     }
 
-    public void setDish_id(Long dish_id) {
-        this.dish_id = dish_id;
+    public void setDishid(Long dishid) {
+        this.dishid = dishid;
     }
 
     public Long getCount() {
@@ -58,19 +50,11 @@ public class DishInOrder {
         this.count = count;
     }
 
-    public Dish getDish() {
-        return dish;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
     @Override
     public String toString() {
         return "DishInOrder{" +
-                "order_id=" + order_id +
-                ", dish_id=" + dish_id +
+                "order_id=" + orderid +
+                ", dish_id=" + dishid +
                 ", count=" + count +
                 '}';
     }
